@@ -60,8 +60,44 @@
         </div>
     </section>
 
+    <section id="quiz" >
+        <div class="bg-white w-50 m-auto shadow-lg rounded-lg  overflow-auto">
+            <div class="p-3 bg-light border-bottom overflow-auto">
+                <h1 class="text-spec text-center">Quiz</h1>
+                <span class="float-right bg-spec rounded-pill text-white p-2 "><span id="currentQuestion"></span> Of <span
+                        id="totalNumberOfQuestions"></span> Question</span>
+
+                <span id="inCorrect" class="btn btn-danger float-left">InCorrect</span>
+                <span id="Correct" class="btn btn-success float-left">Correct</span>
+                <div class="clearFix"></div>
+
+            </div>
+
+            <div class="p-4 text-spec">
+                <h5 class="d-inline">Q: </h5>
+                <h5 id="question" class="d-inline"></h5>
+                <div id="rowAnswer"></div>
+                <div id="alert" class="alert alert-danger mt-3">Please Choose Your Answer</div>
+                <button class="btn float-right py-2 px-4 bg-spec rounded-pill text-white my-4" id="next">Submit</button>
+            </div>
+        </div>
+    </section>
+    
+    <section id="finish" >
+
+        <div class="bg-white w-50 m-auto shadow-lg rounded overflow-auto text-center">
+            <h1 class=" text-spec py-5 bg-light border-bottom">Finish</h1>
+            <div class="p-4">
+                <h5 class=" text-spec">Score</h5>
+                <h4 class=" text-spec" id="score"></h4>
+                <button class="btn float-right py-2 px-4 bg-spec rounded-pill text-white my-4" id="tryBtn">Try
+                    Again?</button>
+            </div>
+        </div>
+    </section>
+
     <script src="./jquery/code.jquery.com_jquery-3.7.0.min.js"></script>
     <script src="./js/bootstrap.bundle.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/script.js" type="module"></script>
 </body>
 </html>
