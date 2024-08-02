@@ -18,7 +18,10 @@ body{
 }
 .bg-spec
 {
-   background-color:  #653383
+    background-color:  #653383
+}
+button:hover{
+    background-color: #653383 !important;
 }
 button{
     cursor: pointer;
