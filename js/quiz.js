@@ -43,11 +43,10 @@ export class Quiz{
     checkAnswer(userAnswer,correctAnswer){
         if(userAnswer==correctAnswer){
             this.score++
-            console.log("correct");
-            
+            $("#Correct").fadeIn(500).fadeOut(500);
         }
         else{
-            console.log("incorrect");
+            $("#inCorrect").fadeIn(500).fadeOut(500);
             
         }
     }
