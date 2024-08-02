@@ -10,7 +10,8 @@ export class Quiz{
     displayQuestions(){
         let correctAnswer=this.questions[this.currentQuestion].correct_answer
         let inCorrectAnswers=this.questions[this.currentQuestion].incorrect_answers
-        let answers=[correctAnswer,...inCorrectAnswers]
+        let answers=this.putCorrectAnswerRandomly(correctAnswer,inCorrectAnswers)
+
         document.getElementById("question").innerHTML=this.questions[this.currentQuestion].question
         let cartona=``
         answers.forEach(
@@ -25,6 +26,11 @@ export class Quiz{
                             }
                         )
         document.getElementById("rowAnswer").innerHTML=cartona
+    }
+    putCorrectAnswerRandomly(correctAnswer,inCorrectAnswers){
+        let place=Math.floor(Math.random()*(inCorrectAnswers.length+1))
+        inCorrectAnswers.splice(place,0,correctAnswer)
+        return inCorrectAnswers
     }
     nextQuestion(){
         let correctAnswer=this.questions[this.currentQuestion].correct_answer
