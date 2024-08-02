@@ -6,6 +6,13 @@ export class Quiz{
         this.numOfQuestion=this.questions.length
         this.displayQuestions()
         document.getElementById("next").addEventListener('click',this.nextQuestion.bind(this))
+        document.getElementById("tryBtn").addEventListener('click',function(){
+            $("#finish").fadeOut(500,()=>{
+                $("#setting").fadeIn(500);
+            });
+            document.getElementById("numberOfQuestions").value=""
+        })
+
     }
     displayQuestions(){
         
