@@ -42,10 +42,15 @@ export class Quiz{
     }
     nextQuestion(){
         let correctAnswer=this.questions[this.currentQuestion].correct_answer
-        let userAnswer=Array.from(document.getElementsByName("answer")).filter((elem)=>{
-            return elem.checked
-        })[0].value
-        this.checkAnswer(userAnswer,correctAnswer)
+
+        
+        if(Array.from(document.getElementsByName("answer")).filter(elem=>elem.checked).length==0){
+            $("#inCorrect").fadeIn(500).fadeOut(500);
+        }
+        else{
+            let userAnswer=Array.from(document.getElementsByName("answer")).filter(elem=>elem.checked)[0].value
+            this.checkAnswer(userAnswer,correctAnswer)
+        }
         this.currentQuestion++;
         if(this.currentQuestion<this.numOfQuestion){
             this.displayQuestions()
