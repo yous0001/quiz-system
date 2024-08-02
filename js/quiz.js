@@ -3,7 +3,7 @@ export class Quiz{
         this.questions=questions
         this.currentQuestion=0
         this.displayQuestions()
-        
+        document.getElementById("next").addEventListener('click',this.nextQuestion.bind(this))
     }
     displayQuestions(){
         let correctAnswer=this.questions[this.currentQuestion].correct_answer
@@ -23,6 +23,17 @@ export class Quiz{
                             }
                         )
         document.getElementById("rowAnswer").innerHTML=cartona
+    }
+    nextQuestion(){
+        this.currentQuestion++;
+        
+        if(this.currentQuestion<this.questions.length){
+            this.displayQuestions()
+        }
+        else{
+            console.log("finish");
+            
+        }
     }
 }
 
