@@ -1,7 +1,9 @@
 export class Quiz{
     constructor(questions){
         this.questions=questions
+        this.score=0
         this.currentQuestion=0
+        this.numOfQuestion=this.questions.length
         this.displayQuestions()
         document.getElementById("next").addEventListener('click',this.nextQuestion.bind(this))
     }
@@ -15,7 +17,7 @@ export class Quiz{
             function(elem){
                 cartona+=`
                                 <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="answer" value=""
+                                    <input type="radio" class="form-check-input" name="answer" value="${elem}"
                                         checked>
                                     ${elem}
                                 </label>
@@ -25,13 +27,27 @@ export class Quiz{
         document.getElementById("rowAnswer").innerHTML=cartona
     }
     nextQuestion(){
+        let correctAnswer=this.questions[this.currentQuestion].correct_answer
+        let userAnswer=Array.from(document.getElementsByName("answer")).filter((elem)=>{
+            return elem.checked
+        })[0].value
+        this.checkAnswer(userAnswer,correctAnswer)
         this.currentQuestion++;
-        
-        if(this.currentQuestion<this.questions.length){
+        if(this.currentQuestion<this.numOfQuestion){
             this.displayQuestions()
         }
         else{
             console.log("finish");
+        }
+    }
+    checkAnswer(userAnswer,correctAnswer){
+        if(userAnswer==correctAnswer){
+            this.score++
+            console.log("correct");
+            
+        }
+        else{
+            console.log("incorrect");
             
         }
     }
