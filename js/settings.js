@@ -12,14 +12,18 @@ export class Settings{
         let category=this.category.value
         let difficulty=Array.from(this.difficulty).filter(elem=>elem.checked)[0].value
         let numberOfQuestions=this.numberOfQuestions.value
-        let API=`https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}`
-        let questions=await this.fetchApi(API)
-        if(questions.length>0){
-            $("#setting").fadeOut(500,()=>{
-                $("#quiz").fadeIn(500);
-            });
-            let quiz=new Quiz(questions);
-            
+            if(numberOfQuestions==""){
+                $("#alert1").fadeIn(500)
+            }
+            else{
+                let API=`https://opentdb.com/api.php?amount=${numberOfQuestions}&category=${category}&difficulty=${difficulty}`
+                let questions=await this.fetchApi(API)
+                if(questions.length>0){
+                    $("#setting").fadeOut(500,()=>{
+                        $("#quiz").fadeIn(500);
+                    });
+                    let quiz=new Quiz(questions);
+            }
         }
     }
     async fetchApi(API){
